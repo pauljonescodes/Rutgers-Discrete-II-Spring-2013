@@ -1,0 +1,90 @@
+
+
+
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{amsthm}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,amstext}
+\usepackage{latexsym,ifthen,url,rotating}
+\usepackage[usenames,dvipsnames]{color}
+
+
+% --- -----------------------------------------------------------------
+% --- Document-specific definitions.
+% --- -----------------------------------------------------------------
+\newtheorem{definition}{Definition}
+
+\newcommand{\concat}{{\,\|\,}}
+\newcommand{\bits}{\{0,1\}}
+
+% --- -----------------------------------------------------------------
+% --- The document starts here.
+% --- -----------------------------------------------------------------
+\begin{document}
+%\maketitle
+\sloppy
+
+\noindent Rutgers University\\
+CS206: Introduction to Discrete Structures II, Spring 2013\\
+Professor David Cash\\
+
+\begin{center}
+\LARGE{\textbf{Homework 3}}\\
+\large{\textbf{\emph{Due at the beginning of class on Wednesday, Feb 27}}}
+\end{center}
+
+\vspace{.1in}
+
+\noindent\textbf{Instructions:} Point values for each problem are listed.
+Write your solutions neatly or type them up.  Typed solutions will also be
+accepted via Sakai.
+
+\begin{enumerate}
+
+\item (6 points) What the probability that a 5 card hand contains exactly 3
+spades?  What if we condition on the hand containing at least 1 spade?
+
+\item (7 points) Suppose $n$ people each throw a six-sided die.  Let $A_n$ be
+the event that at least two distinct people roll the same number.  Calculate
+$P(A_n)$ for $n=1,2,3,4,5,6,7$.
+
+\item (3 points) Suppose we draw 2 balls at random from an urn that contains 5 distinct
+balls, each with a different number from $\{1,2,3,4,5\}$, and define the events
+$A$ and $B$ as
+\[
+A = \text{``5 is drawn at least once"} \quad \text{and} \quad
+B = \text{``5 is drawn twice"} 
+\]
+Compute $P(A)$ and $P(B)$.
+
+\item (4 points) In the previous problem, suppose we place the first ball back
+in the urn before drawing the second.  Compute $P(A),P(B),P(A|B),P(B|A)$ in
+this version of the experiment.
+
+
+\item (4 points) Suppose $5$ percent of cyclists cheat by using illegal doping.
+The blood test for doping returns positive $98$ percent of the people
+doping and $12$ percent who do not.  If Lance's test comes back positive,
+what the probability that he is doping? (Ignoring all other evidence,
+of course...)
+
+\item (6 points) If $A \subseteq B$, can $A$ and $B$ be independent?  What we
+if require that $P(A)$ and $P(B)$ both not equal $0$ or $1$?
+
+\item \textbf{Extra credit (5 points)}  Consider the experiment where two dice
+are thrown. Let $A$ be the event that the sum of the two dice is 7. For each 
+$i \in \{1,2,3,4,5,6\}$  let $B_i$ be the event that at least one $i$ is thrown.
+\begin{enumerate}
+\item Compute $P(A)$ and $P(A|B_1)$.
+\item Prove that $P(A|B_i) = P(A|B_j)$ for all $i$ and $j$.
+\item Since you know that some $B_i$ always occurs, does it make sense that
+$P(A) \neq P(A | B_i)$?  (After all, if $E$ is an event with $P(E) = 1$,
+then for any event $F$, $P(F|E) = P(F)$.  What is going on?  Does this
+seem paradoxical?)
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}
+

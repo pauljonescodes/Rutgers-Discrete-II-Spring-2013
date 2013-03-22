@@ -1,0 +1,226 @@
+\def\llncs{0}       % 1 = using llncs
+
+\documentclass[11pt]{article}
+%\usepackage[margin=1.25in]{geometry}
+%\usepackage[letterpaper,hmargin=1.25in,vmargin=1.25in]{geometry}
+\usepackage{fullpage}
+\usepackage{amsthm}
+
+\usepackage{amsthm,amsmath,amsfonts,amssymb,amstext}
+\usepackage{latexsym,ifthen,url,rotating}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiterX\Set[2]{\lbrace}{\rbrace}%
+ { #1 \, \mid \, #2 }
+
+%\usepackage[pdftex,usenames,dvipsnames]{color}
+\usepackage[usenames,dvipsnames]{color}
+
+\ifnum\llncs=0
+\ifx\pdfoutput\undefined 
+
+%% latex
+
+\else
+
+%% pdflatex
+
+ \usepackage[pdftex,
+    pdffitwindow,
+    plainpages=false,
+    pdfpagelabels=true,
+    pdfborder={0 0 0},
+    bookmarks=true,
+    bookmarksnumbered=true,
+    bookmarksopen=false
+ ]{hyperref}
+
+\fi
+\fi
+
+% --- -----------------------------------------------------------------
+% --- Document-specific definitions.
+% --- -----------------------------------------------------------------
+\newtheorem{definition}{Definition}
+
+\newcommand{\concat}{{\,\|\,}}
+\newcommand{\bits}{\{0,1\}}
+
+% --- -----------------------------------------------------------------
+% --- The document starts here.
+% --- -----------------------------------------------------------------
+\begin{document}
+%\maketitle
+\sloppy
+
+{
+\noindent Paul Jones\\
+Professor David Cash  \\
+Introduction to Discrete Structures II (01:198:206) \\
+\begin{center}
+Homework 1
+\end{center}
+}
+
+\begin{enumerate}
+
+
+\item Let $n\geq 2$ and $A_1,\ldots,A_n$ be sets in some universe $S$.  In this
+problem we will give a proof by induction of the identity
+\[
+\left(\bigcap_{i=1}^n A_i\right)^c = \bigcup_{i=1}^n A_i^c.
+\]
+
+\begin{enumerate}
+\item (5 points)  State and prove the base case for an inductive proof, meaning
+that the identity is true when $n=2$.
+
+\begin{enumerate}
+
+\item $\left(\bigcap_{i=1}^2 A_i\right)^c = \bigcup_{i=1}^2 A_i^c$
+\item $ \left(A_1 \bigcap A_2 \right)^c = A_1^c \bigcup A_2^c$ is true by DeMorgan's
+
+\end{enumerate}
+
+\item (5 points)  State and prove the inductive step, where one shows that the 
+identity is true for general $n>2$, assuming it is true for $n-1$.
+
+
+\begin{enumerate}
+
+\item $ \left(\bigcap_{i=1}^n A_i\right)^c = \bigcup_{i=1}^n A_i^c $ assume true for n
+\item $ \left(\bigcap_{i=1}^{n - 1} A_i\right)^c = \bigcup_{i=1}^{n - 1} A_i^c $ induction for n - 1
+\item $\bigcup_{i = 1}^n A_i^c \cup A_{n + 1}^c = \left( \bigcap_{i = 1}^n A_i \right) \cup A_{n + 1}^c$
+\item $\left(\bigcap_{i=1}^n A_i\right)^c = \left( \bigcap_{i = 1}^n A_i \right) \cup A_{n + 1}^c$
+
+\end{enumerate}
+
+\end{enumerate}
+
+\item Give sample spaces that model the outcomes for the following experiments.
+You may use a regular expression or other formalisms that you find convenient.
+(2 points each)
+\begin{enumerate}
+
+\item Rolling 3 dice: 
+
+$S = \{(i,j,k) \: | \: i,j,k \in \{1, 2, 3, 4, 5, 6 \}\} \!\,$
+
+\item Rolling a die until an even result comes up, or the die is rolled three
+times: 
+
+$S = \{ ( i ) , ( j , i ), (  j , j , \{i,j\} ) \: | \: i \in \{1,2,4\}, j \in \{1,3,5\} \} $ % Work on this one, list all of them, 27 of them
+
+\item Tossing a pair of coins until they both come up tails.  
+
+$S = \{ (e_1), (e_2,e_1), (e_2,e_2,e_1), (e_2,e_2,e_2, ..., e_1) \: | \:e_1 = TT, e_2 \in \{HT, TH, HH\}\}$
+
+\item Draw 2 balls from an urn which contains 6 balls, each with a
+distinct label from $\{1,2,3,4,5,6\}$.
+
+$S = \{i,j \: | \: i,j \in \{1,2,3,4,5,6\} \land i \neq j \}$
+
+\item 
+Draw 1 ball from the same urn, then replace it and draw a ball again.
+
+$S = \{(i,j) \: | \: i,j \in \{1,2,3,4,5,6\}\}$
+
+\end{enumerate}
+
+
+\item For each of the sample space, describe the events (as sets)
+$A\cup B$ and $A \cap B$, when $A$ and $B$ are as follows.  (2 points each)
+\begin{enumerate}
+
+\item $A =$ ``$5$ is rolled exactly twice" and $B = $ ``dice values add to an
+odd number".
+
+% $ A = \{5, 5, i \: \mid \: i \in \{1,2,3,4,6\}\} $
+
+\begin {enumerate}
+
+\item $A \cup B = \{ \{i, i, i\}, \{j, j, i\} \: | \: i \in \{1, 3, 5 \}, j \in \{2, 4, 6\}\} $ 
+\item $A \cap B = \{\{5, 5, i\} \: \mid \: i \in \{1,3\}\} $
+
+\end {enumerate}
+
+\item $A =$ ``$1$ comes up exactly twice" and $B = $ ``$3$ comes up exactly
+twice".
+
+%$ A = \{(1,1,i), (j, 1, 1), (1, j, 1) \: | \: i \in \{2,3,4,5,6\} \land j \in \{3,5\} \}$ % where j comes from {2,3,4,5,6}
+%$ B = \{(3,3,i), (j, 3, 3), (3, j, 3) \: | \: i \in \{1,2,4,5,6\} \land j \in \{1,5\} \}$
+
+\begin {enumerate}
+
+\item $A \cup B = \{(1,1,i), (j, 1, 1), (1, j, 1) \: | \: i \in \{2,3,4,5,6\} \land j \in \{3,5\} \} \cup \{(3,3,i), (j, 3, 3), (3, j, 3) \: | \: i \in \{1,2,4,5,6\} \land j \in \{1,5\} \} $
+
+\item $A \cap B = \emptyset $
+
+\end {enumerate}
+
+\item $A =$ ``both coins come up heads at the same time at some point" 
+and $B = $ ``both coins come up tails at the same time at some point"
+
+%$ A = \{ (e_1, e_2, e_3, ... , e_n) \: \mid \: e_n = TT \land e_i \in \{HT, TH, HH\} \land 1 \le i \le n - 1 \land n \in N \land \exists j e_j = HH \land 1 \le j \le n - 1 \} $
+%$ B = S $
+
+\begin {enumerate}
+
+\item $A \cup B = S = \{ (e_1), (e_2,e_1), (e_2,e_2,e_1), (e_2,e_2,e_2, ..., e_1) \: | \:e_1 = TT, e_2 \in \{HT, TH, HH\}\}$ 
+\item $A \cap B = A = \{ (e_1, e_2, e_3, ... , e_n) \: \mid \: e_n = TT \land e_i \in \{HT, TH, HH\} \land 1 \le i \le n - 1 \land n \in N \land \exists j e_j = HH \land 1 \le j \le n - 1 \}$
+
+% e_1, e_2, e_3, ... , e_n 
+
+% e_n = TT \land e_i \in {HT, TH, HH} \land 1 \le i \le n - 1 \lan n \in \mathbb{N} \land \exists j e_j = HH \land 1 \le j \le n - 1
+
+\end {enumerate}
+
+\item $A =$ ``$1$ is drawn at least once" and $B = $ ``$1$ is drawn twice".
+
+%$A = \{\{i,j\} \: | \: i,j \in \{1,2,3,4,5,6\} \land (i \neq j) \land (i = 1 \oplus j = 1) \} $
+%$B = \emptyset $
+
+\begin {enumerate}
+
+\item $A\cup B = A = \{\{i,j\} \: | \: i,j \in \{1,2,3,4,5,6\} \land (i \neq j) \land (i = 1 \oplus j = 1) \} $
+\item $A \cap B = \emptyset $
+
+\end {enumerate}
+
+\item $A =$ ``$1$ is drawn at least once" and $B = $ ``$1$ is drawn twice".
+
+%$ A = \{\{1,1\},\{1,2\},\{1,3\},\{1,4\},\{1,5\},\{1,6\}\}$ 
+
+%$ B = \{\{1,1\}\} $
+
+\begin {enumerate}
+
+\item $A \cup B = \{\{1,1\},\{1,2\},\{1,3\},\{1,4\},\{1,5\},\{1,6\}\}$ 
+\item $A \cap B = \{\{1,1\}\} $
+
+\end {enumerate}
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+% --- -----------------------------------------------------------------
+
+\bibliographystyle{plain}
+\addcontentsline{toc}{section}{References}
+\bibliography{conf,abbrev_short,crypto}
+
+
+
+% --- -----------------------------------------------------------------
+% --- The Appendix.
+% --- -----------------------------------------------------------------
+
+\begin{appendix}
+\end{appendix}
+
+
+\end{document}
+

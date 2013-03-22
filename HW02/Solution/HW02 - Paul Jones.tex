@@ -1,0 +1,245 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,amstext}
+
+\begin{document}
+
+{
+\noindent Paul Jones\\
+Professor David Cash  \\
+Introduction to Discrete Structures II (01:198:206) \\
+\begin{center}
+Homework 1
+\end{center}
+}
+
+\begin{enumerate}
+
+\item (8 points) Prove that $P(A \cup B) \le P(A) + P(B)$ for any events A and B. Prove the general version by induction, which says that if $A_1, ..., A_n$ are events then 
+$P(\bigcup_{i = 1}^n A_i) \le P(\sum_{i = 1}^n A_i)$. When does this inequality become an equality?
+
+\begin{itemize}
+
+\item Base case 
+
+\begin{equation*}
+P(A_1 \cup A_2) \le P(A_1) + P(A_2)
+\end{equation*}
+
+\item Assume it holds for a general case $(n=k)$
+\begin{equation*}
+P\left(\bigcup_{i = 1}^k A_i\right) \le \sum_{i = 1}^k P(A_i)
+\end{equation*}
+
+\begin{equation*}
+P(A_1 \cup A_2 \cup ... \cup A_k) \le P(A_1) + P(A_2) + ... + P(A_k)
+\end{equation*}
+
+\item Prove that it hold for next case using your assumption.
+
+\begin{equation*}
+P\left(\bigcup_{i = 1}^{k+1} A_i\right) \le \sum_{i = 1}^{k+1} P(A_i)
+\end{equation*}
+
+\begin{equation*}
+P(A_1 \cup A_2 \cup ... \cup A_k \cup A_{k+1}) \le P(A_1) + P(A_2) + ... + P(A_k) + P(A_{k+1})
+\end{equation*}
+
+\begin{equation*}
+(A_1 \cup A_2 \cup ... \cup A_k) = C
+\end{equation*}
+
+\begin{equation*}
+ P(A_1) + P(A_2) + ... + P(A_k) = D
+\end{equation*}
+
+\begin{equation*}
+P(C \cup A_{k+1}) \le P(D) + P(A_{k+1})
+\end{equation*}
+
+By the base case, this is true, and expression is proven for all events.
+
+\end{itemize}
+
+
+
+\item (4 points) If $P(A) = \frac{1}{2}$, $P(B) = \frac{1}{5}$, and $P(A\cup B) = 3/5$, what are $P(A\cap B)$, $P(A^c \cup B)$, and $P(A^c \cap B)$?
+
+\begin{itemize}
+
+\item $P(A\cap B) = \frac{1}{10}$
+\item $P(A^c \cup B) = 3/5$ because the probability of $A$ is the same as $A^c$ 
+\item $P(A^c \cap B) = \frac{1}{10}$
+
+\end{itemize}
+
+
+\item (3 points) How many elements are there in the set
+
+\{$x : 10^7 \le x \le 10^8$, and the base 10 representation of x has no digit used twice\}?
+
+\begin{itemize}
+\item $10^7 = 10000000$, and $10^8 = 100000000$
+\item The smallest number possible is $12345678$, the greatest number possible is $98765432$
+\item For the first number in any element, the first option is \{1, 2, 3, 4, 5, 6, 7, 8, 9\}.
+\item Then for the every second number, it's every number besides the first choice plus 0.
+\item The ``tree'' looks as follows, where $i\neq j\neq k\neq l\neq m\neq n\neq o\neq p$:
+\begin{enumerate}
+\item $\{1 i j k l m n o \}$ where $\{i,j,k,l,m,n,o\} \in \{0,2,3,4,5,6,7,8,9\}$
+\item $\{2 i j k l m n o \}$ where $\{i,j,k,l,m,n,o\} \in \{0,1,3,4,5,6,7,8,9\}$
+\item $\{3 i j k l m n o \}$ where $\{i,j,k,l,m,n,o\} \in \{0,1,2,4,5,6,7,8,9\}$
+\item $\{4 i j k l m n o \}$ where $\{i,j,k,l,m,n,o\} \in \{0,1,2,3,5,6,7,8,9\}$
+\item $\{5 i j k l m n o \}$ where $\{i,j,k,l,m,n,o\} \in \{0,1,2,3,4,6,7,8,9\}$
+\item $\{6 i j k l m n o \}$ where $\{i,j,k,l,m,n,o\} \in \{0,1,2,3,4,5,7,8,9\}$
+\item $\{7 i j k l m n o \}$ where $\{i,j,k,l,m,n,o\} \in \{0,1,2,3,4,5,6,8,9\}$
+\item $\{8 i j k l m n o \}$ where $\{i,j,k,l,m,n,o\} \in \{0,1,2,3,4,5,6,7,9\}$
+\item $\{9 i j k l m n o \}$ where $\{i,j,k,l,m,n,o\} \in \{0,1,2,3,4,5,6,7,8\}$
+\end{enumerate} 
+\item Every ``node'' (a) through (i) is $9 \choose 1$.
+\item When you pick the first number, you still have 9 choices because zero is added. When you choose the second number, you have 8 choices because a number is taken out and non are put back into the set of choices. When you pick your third number, you have 7 choices because a number is taken out and none put back in. ...
+\item So for integer strings $i$ through $o$:
+\begin{equation*}
+[i]\quad\quad[j]\quad\quad[k]\quad\quad[l]\quad\quad[m]\quad\quad[n]\quad\quad[o]\quad\quad[p]
+\end{equation*}
+
+\item The number of elements is equal to
+
+\begin{equation*}
+{9 \choose 1}\times{9 \choose 1}\times{8 \choose 1}\times{7 \choose 1}\times{6 \choose 1}\times{5 \choose 1}\times{4 \choose 1}\times{3 \choose 1}
+\end{equation*}
+
+\end{itemize}
+
+
+\item (3 points) An army output has 19 posts to staff using 30 indistinguishable guards. How many ways are there to distribute the guards if no post is left empty?
+
+\begin{itemize}
+\item This is a ``stars and bars'' problem, where the number of ``stars'' $k$ is equal to 30, and the number of ``bars,'' ``bins,'' or ``posts'' $n$ is equal to 19.
+\begin{equation*}
+{k - 1 \choose n - 1} = {30 - 1 \choose 19 - 1} = {29 \choose 18} = 34597290
+\end{equation*}
+\end{itemize}
+
+
+
+\item (1 point) What is the coefficient of $x^{10}y^{13}$ when $(x + y)^{23}$ is expanded?
+
+\begin{itemize}
+
+\item This problem requires the binomial theorem, where $n = 23$:
+
+\begin{equation*}
+(x + y)^{23} = \sum_{k = 0}^{23} {23 \choose k}x^ky^{23 - k}
+\end{equation*}
+
+\item When $k = 10$, $23 - k$ will equal 13.
+
+\begin{equation*}
+{23 \choose 10}x^{10} y^{13}
+\end{equation*}
+
+\item So the coefficient for $x^{10} y^{13}$ will be
+
+\begin{equation*}
+{23 \choose 10} = 1144066
+\end{equation*}
+
+\end{itemize}
+
+
+
+\item (4 points) What is the coefficient of $w^{9}x^{31}y^{4}z^{19}$ when $(w + x + y + z)^{63}$ is expanded? How
+many monomials appear in the expansion?
+
+\begin{itemize}
+
+\item This is a multinomial coefficient problem where $k = 4$ and $n = 63$:
+
+\begin{equation*}
+(a_1+a_2+...+a_k)^n=\sum_{\substack{n_1,n_2,...,n_k\ge 0 \\ 
+n_1+n_2+...+n_k=n}}\frac{n!}{n_1!n_2!...n_k!}a_1^{n_1}a_2^{n_2}...a_k^{n_k}
+\end{equation*}
+
+\item Set $n_1 = 9$, $n_2 =31$, $n_3 = 4$, and $n_4 = 19$.
+
+\begin{equation*}
+\left(\frac{63!}{9!31!4!19!}\right)\times w^{9}x^{31}y^{4}z^{19}
+\end{equation*}
+
+
+\item Therefore, the coefficient is
+\begin{equation*}
+\frac{63!}{9!31!4!19!}
+\end{equation*}
+
+\item The number of monomials in a multinomial coefficient can be expressed as a ``stars and bars'' problem.
+
+\begin{equation*}
+66 \choose 3
+\end{equation*}
+
+\end{itemize}
+
+
+
+\item (6 points) Let $p$ be a prime number and $1 \le k \le p - 1$. Prove that $p \choose k$ is a multiple of $p$.
+Show that this is not true if $p$ is not prime.
+
+\begin{equation*}
+{p\choose k} = \frac{p(p-1) \times ... \times (p - k + 1)}{1 \times 2 \times ... \times (k - 1) \times k} = p{p - 1 \choose k}
+\end{equation*}
+
+\begin{equation*}
+{4\choose 2} = 6
+\end{equation*}
+
+6 is not a multiple of 4 and is not prime.
+ 
+
+
+\item Verify that for any $n \ge k \ge 1$
+\begin{equation*}
+{n \choose 2} = {k \choose 2} + k(n - k) + {n - k \choose 2}
+\end{equation*}
+Then give a combinatorial argument for why this is true.
+
+\begin{itemize}
+\item Observe that the binomial coefficient with two for all reals:
+\begin{equation*}
+{r\choose 2} = \frac{r (r - 1)}{ 2}
+\end{equation*}
+\item Apply fact to both sides:
+\begin{equation*}
+\frac{n (n - 1)}{ 2} = \frac{k (k - 1)}{ 2} + k(n - k) + \frac{(n - k) (n - k - 1)}{ 2}
+\end{equation*}
+\item Multiply everything by two
+\begin{equation*}
+n (n - 1) = k (k - 1) + 2k(n - k) + (n - k)(n - k - 1)
+\end{equation*}
+\item Expand out
+\begin{equation*}
+n (n - 1) = k^2 - k + 2kn - 2k^2 + k+k^2-n-2 k n+n^2
+\end{equation*}
+\item Simplify
+\begin{equation*}
+n (n - 1) = -n+n^2
+\end{equation*}
+\item Change form
+\begin{equation*}
+n (n - 1) = n (n - 1)
+\end{equation*}
+
+\item Combinatorial argument: 
+\begin{itemize}
+\item $n \choose 2$ is the number of ways we can arrange $n$ objects into groups of 2.
+\item Splitting $n$ into 2, one of those groups will be of size $k$, making the other set of size $n - k$
+\item Using the new partitions $k$ and $n-k$, arrange $n$ ``things'' into groups of two.
+\item The first partition is of length $k$, resulting in $k\choose 2$ ways, and for the second part, we have $n-k$ choose 2 ways, explaining the first and last terms. 
+\item Now choose 2 ``things'', one from different groups of 2, we can choose 1 of the k objects and all of $n-k$ ``things'', which is equal to $k(n-k)$.
+\end{itemize}
+\end{itemize}
+\end{enumerate}
+
+
+\end{document}
+

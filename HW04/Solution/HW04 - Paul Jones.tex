@@ -1,0 +1,286 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{amsthm}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,amstext}
+\usepackage{latexsym,ifthen,url,rotating}
+\usepackage[usenames,dvipsnames]{color}
+\newtheorem{definition}{Definition}
+
+\usepackage[letterpaper]{geometry}
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+
+\newcommand{\concat}{{\,\|\,}}
+\newcommand{\bits}{\{0,1\}}
+\newcommand{\Range}{{\mathrm{Range}}}
+\newcommand{\A}{{\mathcal{A}}}
+
+% Hi Paul,
+
+% The first three problems don't require anything we've done recently:  
+% They boil down to counting the number of possible outcomes that make the event happen.  
+% Nothing fancy with random variables.
+
+% For number 4, you need to solve for x. 
+% Try computing the probabilities P(A), P(B), P(A intersect B), and using independence.
+
+% For number 5, you really need to just go through what the random variables are doing on the sample space.  
+% For number 6, you can figure out how to do the sample space, and then think about the definition of range, 
+% partition, and frequency function with sample space and random variable.  I worked an example about 
+% independence (like problem 6 part 2) in class.
+
+% Problems 5 and 6 use notation from the notes I posted to Sakai.
+
+% Hope that helps,
+% Prof Cash
+
+\begin{document}
+
+\noindent Paul Jones \\
+Rutgers University\\
+CS206: Introduction to Discrete Structures II, Spring 2013\\
+Professor David Cash\\
+
+\begin{center}
+Homework 4
+\end{center}
+
+\begin{enumerate}
+
+	\item (3 points) In the card game bridge we deal 13-card hands to 4 players
+		  named North, South, East, and West (all 52 cards are dealt).  What is the
+		  probability that East and West have no spades?
+	
+	\begin{itemize}
+	
+		\item The total number of possibilities in the sample space for this situation is
+			  the total number of possible card orders over the number of cards each player
+			  is dealt factorial raised to the fourth.
+		
+			  \[ \frac{52!}{13!^4} \]
+		
+		\item There are 13 Spades in a deck of cards, and then 39 non-Spade cards.
+		\item For the hands of East and West, who collectively represent 26 cards,
+			  and who are vying for 39 non-Spade cards, this is the number of 
+			  possibilities:
+		
+			  \[ 39 \choose 26 \]
+		
+		\item North and South also account for 26 total cards, and they are vying
+			  for the remaining cards including Spades. Twenty-six cards were taken
+			  out of the deck by East and West.
+			  
+		     \[ {26 \choose 26} = 1 \]
+		     
+		\item The probability is therefore:
+		
+		     \[ \frac{{39 \choose 13}\times{26 \choose 13}\times{26 \choose 13}\times{13 \choose 13}}{\frac{52!}{13!^4}} \]
+		     
+	\end{itemize}
+	
+	\item (4 points) An urn contains $n>0$ white balls and $m>0$ black balls.
+		  Suppose we draw two balls without replacement.  What is the probability that
+		  the balls are of the same color?  What if we draw them with replacement?  Show
+		  your work.  Which of these probabilities is larger?  Briefly explain some
+		  intuition for why one should be larger.
+		  
+		  \begin{itemize}
+		  
+			  \item Without replacement
+			  
+			  \begin{itemize}
+			  
+				  \item There are $n + m$ balls in all, and we're interested in choosing
+				  		2 of them. The sample space is:
+						
+						\[ {m + n \choose 2} \]
+						
+				  \item Call $W$ ``drawing two white balls'' and $B$ ``drawing two black
+				  		balls. Then $W \cup B$ is either of those events happening or both.
+						
+				  \item The events are mutually exclusive, the drawings cannot all be the same
+				  		for the same drawing.
+						
+						\[ P(W \cup B) = P(W) + P(B) \]
+						\[ = \frac{{m \choose 2} + {n \choose 2}}{{m + n \choose 2}} \]
+						
+			  \end{itemize}
+			  
+			  \item With replacement
+			  
+			  \begin{itemize}
+			  
+			      \item The events are, again, mutually exclusive.
+			      \item Being as the balls are placed back in the urn, each event is equally
+			      	    likely to occur.
+				  \item Count the number of either color, place it over total balls, and
+				        multiply it by itself to represent that the event has to happen twice.
+				  \item Do the same for the other color, add the two values.
+			      
+			      \[ \left(\frac{m}{m + n}\right)^2 + \left(\frac{n}{m + n}\right)^2 \]
+			  
+			  \end{itemize}
+		  
+		  \end{itemize}
+	
+	\item (4 points) Again consider an urn with $n>0$ white balls and $m >0$ black
+		  balls.  Suppose we draw $r\geq 1$ balls from the urn without replacement.  What
+		  is the probability that we draw exactly $k$ white balls?
+	
+	\begin{itemize}
+	
+		\item The probability of getting a white, where $i$ is the number of total balls already drawn, is
+		
+			  \[ \left(\frac{n - i}{m + n - i}\right) \]
+			  
+		\item And the probability of getting a black under the same conditions is
+		
+			  \[ \left(\frac{m - i}{m + n - i}\right) \]
+			  
+		\item So draw $k$ white balls, and then transfer the counter to drawing the 
+			  remaining balls to avoid over-counting
+			  
+			  \[ \left(\prod_{i = 0}^{k - 1} \frac{n - i}{m + n - i} \right) \times \left(\prod_{i = k}^{r - 1} \frac{m - (i - k)}{m + n - i} \right)\]
+	
+	\end{itemize}
+	
+	\item (4 points) A box contains a mixture of cubes and spheres and any of these
+		  objects can be either white or black.  Suppose the box contains $4$ black
+		  cubes, $6$ black spheres, $6$ white cubes, and $x$ white spheres.  Consider the
+		  experiment of drawing a random object from the box, and let $A$ be the event
+		  that a cube is drawn and $B$ be the event that a black object is drawn.
+		  If $A$ and $B$ are independent, what is $x$?
+	
+	\begin{itemize}
+	
+		\item The probability of a cube being drawn is the total number of cubes over
+			  the total number of cubes and spheres.
+			  
+			  \[ \frac{4 + 6}{4 + 6 + 6 + x} \]
+			  
+		\item The probability of a black object being drawn is similarly the total number
+			  of black objects divided by the total number of objects
+			  
+			  \[\frac{6 + 4}{4 + 6 + 6 + x} \]
+	
+		\item Consider the complement of $A \cup B$, it is the event that a non-black
+			  and non-cube item is draw, which is a white sphere.
+			  
+			  \[P(x) = P((A \cup B)^c) \]
+	
+	\end{itemize}
+	
+	\item (10 points total) Two fair dice are rolled.  Define the random variables
+		  $X =$ the sum of the two rolls,
+		  $Y =$ the maximum of the two rolls,
+		  $Z =$ the absolute value of the difference of the two rolls
+		  and $W = XY$ (i.e., the product of $X$ and $Y$).
+	\begin{enumerate}
+	 \item (2 points) What are $\Range(X)$, $\Range(Y)$, $\Range(Z)$ and
+	 $\Range(W)$?
+	 
+	 \begin{itemize}
+	 
+		 \item $\Range(X) = \lbrace 2, 3, 4, ... , 11, 12 \rbrace $
+		 \item $\Range(Y) = \lbrace 1, 2, 3, 4, 5, 6 \rbrace $
+		 \item $\Range(Z) = \lbrace 0, 1, 2, 3, 4, 5 \rbrace$
+		 \item $\Range(W) = \lbrace i \times j \: : \: i \in \lbrace 2, 3, 4, ... , 11, 12 \rbrace, j \in \lbrace 1, 2, 3, 4, 5, 6 \rbrace\rbrace $
+	 
+	 \end{itemize}
+	
+	 \item (2 points) What are the partitions $\A_X$ and $\A_Z$?
+	 
+	 \begin{itemize}
+	 
+	 	\item $\A_X$
+		
+			\begin{itemize}
+			
+				\item $2 = 1 + 1$
+				\item $3 = 1 + 2$
+				\item $4 = 1 + 3 = 2 + 2$
+				\item $5 = 1 + 4 = 3 + 2$
+				\item $6 = 1 + 5 = 2 + 4 = 3 + 3$
+				\item $7 = 1 + 6 = 2 + 5 = 3 + 4$
+				\item $8 = 2 + 6 = 3 + 5 = 4 + 4$
+				\item $9 = 3 + 6 = 4 + 5$
+				\item $10 = 4 + 6 = 5 + 5$
+				\item $11 = 5 + 6$
+				\item $12 = 6 + 6$
+			
+			\end{itemize}
+	 
+	 	\item $\A_Z$
+		
+			\begin{itemize}
+			
+				\item $0 = 1 - 1 = 2 - 2 = 3 - 3 = 4 - 4 = 5 - 5 = 6 - 6$
+				\item $1 = 6 - 5 = 5 - 4 = 4 - 3 = 3 - 2 = 3 - 2 = 2 - 1$
+				\item $2 = 5 - 4 = 5 - 3 = 4 - 2 = 3 - 1$
+				\item $3 = 6 - 3 = 5 - 2 = 4 - 1$
+				\item $4 = 6 - 2 = 5 - 1$
+				\item $5 = 6 - 1$
+			
+			\end{itemize}
+	 
+	 \end{itemize}
+	 
+	 \item (3 points) Give tables showing the values of $f_X,f_Y,f_Z,$ and $f_W$.
+	 
+	 
+		
+		\begin{table}[h!]
+			\begin{center}
+			\caption{$f_X$}
+				\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+				x & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ 
+				\hline
+				f(x) & $\frac{1}{11}$ & $\frac{1}{11}$ & $\frac{2}{11}$ & $\frac{2}{11}$ & $\frac{3}{11}$ & $\frac{3}{11}$ & $\frac{3}{11}$ & $\frac{2}{11}$ &$\frac{2}{11}$ & $\frac{1}{11}$ & $\frac{1}{11}$ \\ 
+				\hline
+				\end{tabular}
+			\label{ }
+			\end{center}
+		\end{table} 
+		
+		\begin{table}[h!]
+			\begin{center}
+			\caption{$f_Y$}
+				\begin{tabular}{|c|c|c|c|c|c|c|}
+				\hline
+				x & 1 & 2 & 3 & 4 & 5 & 6\\ 
+				\hline
+				f(y) & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{2}{6}$ & $\frac{3}{6}$ & $\frac{4}{6}$ & $\frac{5}{6}$ \\ 
+				\hline
+				\end{tabular}
+			\label{ }
+			\end{center}
+		\end{table} 
+		
+		\begin{table}[h!]
+			\begin{center}
+			\caption{$f_Z$}
+				\begin{tabular}{|c|c|c|c|c|c|c|}
+				\hline
+				x & 0 & 1 & 2 & 3 & 4 & 6\\ 
+				\hline
+				f(z) & $\frac{6}{12}$ & $\frac{5}{12}$ & $\frac{4}{11}$ & $\frac{3}{12}$ & $\frac{2}{12}$ & $\frac{1}{12}$ \\ 
+				\hline
+				\end{tabular}
+			\label{ }
+			\end{center}
+		\end{table} 
+	 
+	 \item (3 points) Are the events $X =7$ and $Z=1$ independent?
+	 
+	 \begin{itemize}
+	 
+	 	\item No. It doesn't meet the definition.
+	 
+	 \end{itemize}
+	 
+	\end{enumerate}
+\end{enumerate}
+
+
+\end{document}
+

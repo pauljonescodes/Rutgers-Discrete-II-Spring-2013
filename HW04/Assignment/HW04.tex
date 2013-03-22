@@ -1,0 +1,107 @@
+
+
+
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{amsthm}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,amstext}
+\usepackage{latexsym,ifthen,url,rotating}
+\usepackage[usenames,dvipsnames]{color}
+
+
+% --- -----------------------------------------------------------------
+% --- Document-specific definitions.
+% --- -----------------------------------------------------------------
+\newtheorem{definition}{Definition}
+
+\newcommand{\concat}{{\,\|\,}}
+\newcommand{\bits}{\{0,1\}}
+\newcommand{\Range}{{\mathrm{Range}}}
+\newcommand{\A}{{\mathcal{A}}}
+
+% --- -----------------------------------------------------------------
+% --- The document starts here.
+% --- -----------------------------------------------------------------
+\begin{document}
+%\maketitle
+\sloppy
+
+\noindent Rutgers University\\
+CS206: Introduction to Discrete Structures II, Spring 2013\\
+Professor David Cash\\
+
+\begin{center}
+\LARGE{\textbf{Homework 4}}\\
+\large{\textbf{\emph{Due at the beginning of class on Wednesday, March 13}}}
+\end{center}
+
+\vspace{.1in}
+
+\noindent\textbf{Instructions:} Point values for each problem are listed.
+Write your solutions neatly or type them up.  Typed solutions will also be
+accepted via Sakai.
+
+\begin{enumerate}
+
+\item (3 points) In the card game bridge we deal 13-card hands to 4 players
+named North, South, East, and West (all 52 cards are dealt).  What is the
+probability that East and West have no spades?
+
+\item (4 points) An urn contains $n>0$ white balls and $m>0$ black balls.
+Suppose we draw two balls without replacement.  What is the probability that
+the balls are of the same color?  What if we draw them with replacement?  Show
+you work.  Which of these probabilities is larger?  Briefly explain some
+intuition for why one should be larger.
+
+\item (4 points) Again consider an urn with $n>0$ white balls and $m >0$ black
+balls.  Suppose we draw $r\geq 1$ balls from the urn without replacement.  What
+is the probability that we draw exactly $k$ white balls?
+
+\item (4 points) A box contains a mixture of cubes and spheres and any of these
+objects can be either white or black.  Suppose the box contains $4$ black
+cubes, $6$ black spheres, $6$ white cubes, and $x$ white spheres.  Consider the
+experiment of drawing a random object from the box, and let $A$ be the event
+that a cube is drawn and $B$ be the event that a black object is drawn.
+If $A$ and $B$ are independent, what is $x$?
+
+\item (10 points total) Two fair dice are rolled.  Define the random variables
+$X =$ the sum of the two rolls,
+$Y =$ the maximum of the two rolls,
+$Z =$ the absolute value of the difference of the two rolls
+and $W = XY$ (i.e., the product of $X$ and $Y$).
+\begin{enumerate}
+ \item (2 points) What are $\Range(X)$, $\Range(Y)$, $\Range(Z)$ and
+ $\Range(W)$?
+
+ \item (2 points) What are the partitions $\A_X$ and $\A_Z$?
+ \item (3 points) Give tables showing the values of $f_X,f_Y,f_Z,$ and $f_W$.
+ \item (3 points) Are the events $X =7$ and $Z=1$ independent?
+\end{enumerate}
+
+\item (6 points total) Consider the experiment of randomly shuffling
+$n$ students amongst $n$ desks, as we did in studying de Montmort's problem.
+Let $A$ be the event that ``neither student 1 nor student 2 gets
+put back in their own desk".
+Let $X$ be the indicator function for $A$ and let $Y = $ the number of
+students do \emph{not} get put back in their own desk.
+
+\begin{itemize}
+\item (4 points) Define a sample space for the experiment and find $\Range(X), \A_X, f_X$.
+\item (2 points) Are $X$ and $Y$ independent?  Explain.
+\end{itemize}
+
+\item \textbf{Extra credit (4 points)} A true-false question has been
+posed to a husband-and-wife team on a quiz show.  Each of the husband
+and wife will independently give the correct answer with probability $p>0$
+(and be wrong the rest of the time).
+Which of the following is a better strategy for answering the question correctly?  (Explain your answer.)
+\begin{itemize}
+\item Let one person (say the wife) answer the question, and ignore the other.
+\item Have the husband and wife consult on their answers, and if they agree
+then use their answer.  Otherwise guess true of false at random.
+\end{itemize}
+\end{enumerate}
+
+
+\end{document}
+

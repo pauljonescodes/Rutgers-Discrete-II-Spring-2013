@@ -1,0 +1,110 @@
+
+
+
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{amsthm}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,amstext}
+\usepackage{latexsym,ifthen,url,rotating}
+\usepackage[usenames,dvipsnames]{color}
+
+
+% --- -----------------------------------------------------------------
+% --- Document-specific definitions.
+% --- -----------------------------------------------------------------
+\newtheorem{definition}{Definition}
+
+\newcommand{\concat}{{\,\|\,}}
+\newcommand{\bits}{\{0,1\}}
+\newcommand{\Range}{{\mathrm{Range}}}
+\newcommand{\A}{{\mathcal{A}}}
+
+% --- -----------------------------------------------------------------
+% --- The document starts here.
+% --- -----------------------------------------------------------------
+\begin{document}
+%\maketitle
+\sloppy
+
+\noindent Rutgers University\\
+CS206: Introduction to Discrete Structures II, Spring 2013\\
+Professor David Cash\\
+
+\begin{center}
+\LARGE{\textbf{Homework 5}}\\
+\large{\textbf{\emph{Due at the beginning of class on Wednesday, March 27}}}
+\end{center}
+
+\vspace{.1in}
+
+\noindent\textbf{Instructions:} Point values for each problem are listed.
+Write your solutions neatly or type them up.  Typed solutions will also be
+accepted via Sakai.
+
+\begin{enumerate}
+
+
+\item (10 points total) Two teams $x$ and $y$ are playing each other in the
+World Series, which is a best-of-seven-game match that ends when one
+team wins 4 games.  Assume that team $x$ wins each game with probability
+$p$, and that the outcome of each game constitutes an independent trial.
+
+\begin{enumerate}
+\item (0.5 points) What is the probability that $x$ wins the first four games?
+
+\item (2 points) What is the probability that $x$ wins four games after
+at most five game have been played?
+
+\item (2 points) What is the probability that $x$ will win four games before
+$y$ wins four games?  (i.e., What is the probability that $x$ wins
+the Series?)
+
+\item (0.5 points) Calculate and simplify your answer in part (c) when $p=1/2$
+and when $p=2/3$.
+
+\item (1 point) Let $X$ be the random variable that counts the number of games
+that are played.  What is $\Range(X)$?
+
+\item (2 points) What is $P(X=7)$?
+
+\item (2 points) What is $P(X\geq 6)$?
+\end{enumerate}
+
+\item (4 points) Suppose we roll two fair dice.  Let the random variable $X=$
+``the minimum of the two dice'' and $Y =$ ``the absolute value of the
+difference of the two dice''.  Find $E(X)$ and $E(Y)$.
+
+\item (4 points) Suppose boxes of cereal are filled with a random prize,
+each drawn from independently and uniformly from $6$ possible prizes.
+If we buy $N$ boxes of cereal, what is the expected number of distinct
+prizes we will collect? \begin{small}\textsf{Hint: Consider the indicator
+random variables $I_{E_i}$ for the event $E_i =$ ``the $i$-th price was
+in some box''.}\end{small}
+
+\item (4 points) A group of $m$ men and $w$ randomly sit in a single row at a
+theater.  If a man and woman are seated next to each other we say they form a
+couple.  (Couples can overlap, meaning that one person can be a member of two
+couples.)  What is the expected number of couples?
+\begin{small}\textsf{Hint: Use indicator
+random variables for each possible couple forming.
+}\end{small}
+
+
+\item (3 points) Suppose an experiment tosses a fair coin twice;  the experiment
+``succeeds'' if both tosses were Heads.  We repeat this experiment 
+for 12 independent trials.  Let $N$ be the random variable that counts
+the fraction of trials that are successful (so $N = S/12$, where
+$S$ is the number of successful trials).  Find $E(N)$.
+
+\item \textbf{Extra Credit: (4 points)} Consider the experiment where $n$ balls
+are to be placed randomly into $n$ boxes. Let $N_1$ count the number of boxes
+with exactly one ball, and let $N_2$ count the number of boxes with exactly two
+balls. Find the probability of the events ``$N_1 = n$" and ``$N_1 = n - 1$".
+Use the indicator technique to find $E(N_1)$ and $E(N_2)$.
+
+
+\end{enumerate}
+
+
+\end{document}
+
