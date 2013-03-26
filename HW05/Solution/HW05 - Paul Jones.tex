@@ -26,20 +26,14 @@
 %\maketitle
 \sloppy
 
-\noindent Rutgers University\\
+\noindent Paul Jones \\
+Rutgers University\\
 CS206: Introduction to Discrete Structures II, Spring 2013\\
 Professor David Cash\\
 
 \begin{center}
-\LARGE{\textbf{Homework 5}}\\
-\large{\textbf{\emph{Due at the beginning of class on Wednesday, March 27}}}
+Homework 4
 \end{center}
-
-\vspace{.1in}
-
-\noindent\textbf{Instructions:} Point values for each problem are listed.
-Write your solutions neatly or type them up.  Typed solutions will also be
-accepted via Sakai.
 
 \begin{enumerate}
 
@@ -50,29 +44,83 @@ team wins 4 games.  Assume that team $x$ wins each game with probability
 $p$, and that the outcome of each game constitutes an independent trial.
 
 \begin{enumerate}
-\item (0.5 points) What is the probability that $x$ wins the first four games?
-
-\item (2 points) What is the probability that $x$ wins four games after
-at most five game have been played?
-
-\item (2 points) What is the probability that $x$ will win four games before
-$y$ wins four games?  (i.e., What is the probability that $x$ wins
-the Series?)
-
-\item (0.5 points) Calculate and simplify your answer in part (c) when $p=1/2$
-and when $p=2/3$.
-
-\item (1 point) Let $X$ be the random variable that counts the number of games
-that are played.  What is $\Range(X)$?
-
-\item (2 points) What is $P(X=7)$?
-
-\item (2 points) What is $P(X\geq 6)$?
+	\item (0.5 points) What is the probability that $x$ wins the first four games?
+	
+	\begin{itemize}
+	
+		\item There is one way for x to win in four, and that's winning four in a row.
+		
+			  \[p^4\]
+	
+	\end{itemize}
+	
+	\item (2 points) What is the probability that $x$ wins four games after
+	at most five game have been played?
+	
+	\begin{itemize}
+		\item Sample space, strings, x character means x won, y character means y won.
+		
+		\begin{verbatim}
+		
+		xxxx
+		yxxxx
+		xyxxx
+		xxyxx
+		xxxyx
+		
+		\end{verbatim}
+		
+		\[(1 - p) p^4 \times 4 \]
+		
+		\item P(x wins in less than five games) = $P(\mathrm{\{xxxx, yxxxx, xyxxx, xxyxx, xxxyx\}})$
+		\item P(x wins in 6) = ${5 \choose 2}(1 - p)^2 p^4$
+		
+	\end{itemize}
+	
+	\item (2 points) What is the probability that $x$ will win four games before
+	$y$ wins four games?  (i.e., What is the probability that $x$ wins
+	the Series?)
+	
+	
+	
+	\item (0.5 points) Calculate and simplify your answer in part (c) when $p=1/2$
+	and when $p=2/3$.
+	
+	\item (1 point) Let $X$ be the random variable that counts the number of games
+	that are played.  What is $\Range(X)$?
+	
+	\item (2 points) What is $P(X=7)$?
+	
+	\item (2 points) What is $P(X\geq 6)$?
 \end{enumerate}
 
 \item (4 points) Suppose we roll two fair dice.  Let the random variable $X=$
 ``the minimum of the two dice'' and $Y =$ ``the absolute value of the
 difference of the two dice''.  Find $E(X)$ and $E(Y)$.
+
+\begin{itemize}
+
+	\item $E(X)$
+	
+	\begin{itemize}
+	
+		\item 
+	
+	\end{itemize}
+	
+	\item $E(Y)$
+
+	\begin{itemize}
+	
+		\item The range is $\{0, 1, 2, 3, 4, 5\}$.
+		\item There are 6 ways of getting 0, $\{6 - 6, 5 - 5, ...\}$
+		      \[ \frac{6}{36} \]
+		\item There are 6 ways of getting 1, $\{6 - 5, 5 - 6, 4 - 3, 3 - 4, 3 - 2, 2 - 3, 2 - 1, 1 - 2\}$.
+		      \[ \frac{8}{36} \]
+	
+	\end{itemize}
+
+\end{itemize}
 
 \item (4 points) Suppose boxes of cereal are filled with a random prize,
 each drawn from independently and uniformly from $6$ possible prizes.
