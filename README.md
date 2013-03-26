@@ -1,4 +1,4 @@
-Rutgers-Discrete-II-Spring-2013
-===============================
+Discrete Structures II Spring 2013 with Professor David Cash
+============================================================
 
-Discrete Structures II, homework, Spring 2013
+All use of this code must be consistent with the [DCS Academic Integrity Policy](http://www.cs.rutgers.edu/policies/academicintegrity/index.php).
