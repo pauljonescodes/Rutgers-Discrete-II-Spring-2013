@@ -224,6 +224,14 @@ prizes we will collect? \begin{small}\textsf{Hint: Consider the indicator
 random variables $I_{E_i}$ for the event $E_i =$ ``the $i$-th price was
 in some box''.}\end{small}
 
+\begin{itemize}
+
+	\item Let $X_1 ... X_6$ be the identifier for each of 6 unique toys
+	
+	\[ E\left(\sum I_{E_i}\right) = \sum_{i = 1}^6 E(I_{E_i}) = 6(1 - \left(5/6)\right)^n \]
+
+\end{itemize}
+
 \item (4 points) A group of $m$ men and $w$ randomly sit in a single row at a
 theater.  If a man and woman are seated next to each other we say they form a
 couple.  (Couples can overlap, meaning that one person can be a member of two
@@ -250,7 +258,7 @@ the fraction of trials that are successful (so $N = S/12$, where
 $S$ is the number of successful trials).  Find $E(N)$.
 
 
-	\[ E(N) = E(\frac{S}{12} \]
+	\[ E(N) = E\left(\frac{S}{12}\right) \]
 	\[ S = \{ x_1 + ... + x_12 \} \]
 	\[\frac{1}{12} E(S) \]
 	\[E(S) = \sum_{a_i \in R(S)} a_i \times P(X_i) \]
