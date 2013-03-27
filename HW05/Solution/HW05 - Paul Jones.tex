@@ -104,8 +104,34 @@ difference of the two dice''.  Find $E(X)$ and $E(Y)$.
 	
 	\begin{itemize}
 	
-		\item 
+		\item The formula to solve this is
+		
+			  \[E(X) = \sum_{a_i \in R(X)}a_i P(X = a_1)\]
+			
+		\item The sample space has a cardinality of 36, as there 6 choices for each of the two choices.
+		\item All rolls are equally likely in a fair dice.
+		\item Starting with the highest element in the range (which is the set containing 1 through 6), there is only one way 6 can be the minimum.
 	
+			  \[P(x = 6) = P(\lbrace(6, 6) \rbrace) = \frac{1}{36}\]
+			  
+		\item There are 3 ways of ``getting 5'', and that's rolling two fives, and then both variations of a five and a six.
+		
+			  \[P(x = 5) = P(\lbrace(5, 5), (5, 6), (6,5) \rbrace) = \frac{3}{36}\]
+			  
+		\item Apply the same pattern,
+	
+			  \[P(x = 4) = P(\lbrace(4, 4), (4, 5), (5,4), (4,6), (6,4) \rbrace) = \frac{5}{36}\]
+			  \[P(x = 3) = P(\lbrace(3, 3), (3, 4), (4,3), (3,5), (5,3), (3,6), (6,3) \rbrace) = \frac{7}{36}\]
+			  \[P(x = 2) = P(\lbrace(2, 2), (2, 3), (3,2), (2, 4), (4, 2), (2, 5), (5,2), (2,6), (6,2)) = \frac{9}{36} \]
+			  
+		\item Notice that there 2 more each time.
+		
+			  \[P(x = 1) = \frac{11}{36} \]
+			  
+		\item Now sum them and multiply them by their value ($a_i$) to find expected value,
+		
+			  \[E(X) = \left(6 \times \frac{1}{36}\right) + \left(5 \times \frac{3}{36}\right) + \left(4 \times \frac{5}{36}\right) + \left(3 \times \frac{7}{36}\right) + \left(2 \times \frac{9}{36}\right) + \frac{11}{36} = 2.5277777778\]
+			  
 	\end{itemize}
 	
 	\item $E(Y)$
