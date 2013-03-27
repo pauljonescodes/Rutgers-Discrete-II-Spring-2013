@@ -49,6 +49,7 @@ $p$, and that the outcome of each game constitutes an independent trial.
 	\begin{itemize}
 	
 		\item There is one way for x to win in four, and that's winning four in a row.
+		\item By the multiplicity principle, we can multiply the chance of winning each game to get the probability of winning all games.
 		
 			  \[p^4\]
 	
@@ -70,10 +71,14 @@ $p$, and that the outcome of each game constitutes an independent trial.
 		
 		\end{verbatim}
 		
-		\[(1 - p) p^4 \times 4 \]
-		
+		\item The team represented by y cannot win at the end because after 4 x wins, the games halt.
 		\item P(x wins in less than five games) = $P(\mathrm{\{xxxx, yxxxx, xyxxx, xxyxx, xxxyx\}})$
-		\item P(x wins in 6) = ${5 \choose 2}(1 - p)^2 p^4$
+		\item There is a $(1 - p)$ chance of y winning.
+		\item The x team still needs to win 4 games, which has a probability of $p^4$.
+		\item Multiplying these two values gets you the likelihood that this happens for any given instance of x winning in less than five games.
+		\item To get all of the possible less than 5 games combinations, multiply by the number there are, which is 4.
+		\[(1 - p) \times p^4 \times 4 \]
+		%\item P(x wins in 6) = ${5 \choose 2}(1 - p)^2 p^4$
 		
 	\end{itemize}
 	
@@ -176,6 +181,16 @@ couples.)  What is the expected number of couples?
 random variables for each possible couple forming.
 }\end{small}
 
+\begin{itemize}
+
+	\item Use linearity of expectation for each pair of seats.
+	\item Let $x$ equal the number of seats.
+	\item Then, $E(X_1) = P($couple in a seat 1 and 2$)$, $E(X_2) = P($couple in a seat 2 and 3$)$, etc.
+	\item For any given seat, there is a $\frac{1}{2}$ chance of their being a man or a woman in the seat.
+	\item The four possibilities are \{mw, wm, mm, ww\}.
+		  \[\sum_{i}^{x} \]
+
+\end{itemize}
 
 \item (3 points) Suppose an experiment tosses a fair coin twice;  the experiment
 ``succeeds'' if both tosses were Heads.  We repeat this experiment 
