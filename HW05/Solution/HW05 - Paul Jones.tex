@@ -77,7 +77,8 @@ $p$, and that the outcome of each game constitutes an independent trial.
 		\item The x team still needs to win 4 games, which has a probability of $p^4$.
 		\item Multiplying these two values gets you the likelihood that this happens for any given instance of x winning in less than five games.
 		\item To get all of the possible less than 5 games combinations, multiply by the number there are, which is 4.
-		\[(1 - p) \times p^4 \times 4 \]
+		\item Then, add the probability of just 4 straight victories.
+		\[(1 - p) \times p^4 \times 4 + p^4\]
 		%\item P(x wins in 6) = ${5 \choose 2}(1 - p)^2 p^4$
 		
 	\end{itemize}
@@ -86,17 +87,67 @@ $p$, and that the outcome of each game constitutes an independent trial.
 	$y$ wins four games?  (i.e., What is the probability that $x$ wins
 	the Series?)
 	
+	\begin {itemize}
 	
+		\item To begin, lets enumerate some possibilities using strings.
+		
+		\[ \{\mathrm{xxxx}\} \]
+		
+		\[\{\mathrm{yxxxx,
+		xyxxx,
+		xxyxx,
+		xxxyx}\}\]
+		
+		\[\{\mathrm{yyxxxx,
+		yxyxxx,
+		...,
+		xxxyyx}\}\]
+		
+		\[\{\mathrm{yyyxxxx,
+		yyxyxxx,
+		...,
+		xxxyyyx}\}\]
+		
+		\item These are all the possibilities for x winning. Name these $X_1$ through $X_4$ and 
+			  notice the sum of their probabilities to be the probability that $x$ wins four games.
+			  
+		\item For $X_3$, there are ${5 \choose 2,3}$ ways of ordering x and y, y has to win twice, and x still has to win four times.
+		\item You have to subtract off the cases where there is a y at the end, 
+		
+			  \[ {4 \choose 1,3} \times (1 - y)^2 \times p^4 \]
+	
+		\item For $X_4$, there are ${6 \choose 3,3}$ ways of ordering x and y, y has to win thrice, and x still has to win four times.
+		
+			  \[ {5 \choose 2,3} \times (1 - y)^3 \times p^4 \]
+			  
+		\item Now add 4 straight victories:
+		
+			  \[ {4 \choose 1,3} \times (1 - y)^2 \times p^4 + {5 \choose 2,3} \times (1 - y)^3 \times p^4 + p^4\]
+	\end{itemize}
 	
 	\item (0.5 points) Calculate and simplify your answer in part (c) when $p=1/2$
 	and when $p=2/3$.
 	
+	\begin{itemize}
+	
+		\item $p = 1 / 2 : 1/2$
+		\item $p = 2 / 3 : 1808/2187$
+	
+	\end{itemize}
+	
 	\item (1 point) Let $X$ be the random variable that counts the number of games
 	that are played.  What is $\Range(X)$?
 	
+	\[R(X) = \{4, 5, 6, 7 \} \]
+	
 	\item (2 points) What is $P(X=7)$?
 	
+	\[ {6 \choose 3}(1 - p)^3 p^4 + {6 \choose 3} p^3 (1 - p)^3 p^4 \]
+	
 	\item (2 points) What is $P(X\geq 6)$?
+	
+	\[ {5 \choose 2}(1 - p)^2 p^4 + {5 \choose 2} p^2 (1 - p)^4 + {6 \choose 3} (1 - p)^3 p^4 + {6 \choose 3} p^3 (1 - p)^4 \]
+	
 \end{enumerate}
 
 \item (4 points) Suppose we roll two fair dice.  Let the random variable $X=$
@@ -148,19 +199,19 @@ difference of the two dice''.  Find $E(X)$ and $E(Y)$.
 			  \[E(X) = \sum_{a_i \in R(X)}a_i P(X = a_1)\]
 		\item There are 6 ways of getting 0, $\{6 - 6, 5 - 5, ...\}$. For $i = 0$,
 		      \[ 0 \times P(X = 0) = 0 \times \frac{6}{36} = 0 \]
-		\item There are 8 ways of getting 1, $\{6 - 5, 5 - 6, 4 - 3, 3 - 4, 3 - 2, 2 - 3, 2 - 1, 1 - 2\}$. For $i = 1$,
-		      \[ 1 \times P(X = 1) = 1 \times \frac{8}{36} = \frac{2}{9} \]
+		\item There are 10 ways of getting 1, $\{6 - 5, 5 - 6, 5 - 4, 4 - 5, 4 - 3, 3 - 4, 3 - 2, 2 - 3, 2 - 1, 1 - 2\}$. For $i = 1$,
+		      \[ 1 \times P(X = 1) = 1 \times \frac{10}{36} \]
 		\item There are 8 ways of getting 2, $\{6 - 4, 4 - 6, 5 - 3, 3 - 5, 4 - 2, 2 - 4, 1 - 5, 5 - 1\}$. For $i = 2$,
 			  \[ 2 \times P(X = 2) = 2 \times \frac{8}{36} = \frac{4}{9}\]
-		\item There are 8 ways of getting 3, $\{6 - 3, 3 - 6, 5 - 2, 2 - 5, 4 - 1, 1 - 4, 1 - 2, 2 - 1\}$. For $i = 3$,
-			  \[ 3 \times P(X = 3) = 3 \times \frac{8}{36} = \frac{2}{3}\]
+		\item There are 6 ways of getting 3, $\{6 - 3, 3 - 6, 5 - 2, 2 - 5, 4 - 1, 1 - 4\}$. For $i = 3$,
+			  \[ 3 \times P(X = 3) = 3 \times \frac{6}{36} = \frac{2}{3}\]
 	    \item There are 4 ways of getting 4, $\{6 - 2, 2 - 6, 5 - 1, 1 - 5\}$. For $i = 4$,
 	          \[ 4 \times P(X = 4) = 4 \times \frac{4}{36} = \frac{4}{9}\]
 	    \item There are 2 ways of getting 5, $\{6 - 1, 1 - 6\}$. For $i = 5$,
 	          \[ 5 \times P(X = 5) = 5 \times \frac{2}{36} = \frac{5}{18}\]
 	    \item We know we've covered the sample space because the sum of the specific instances is the same as the cardinality of the sample space.
 	    \item The expected value,
-	    		  \[E(X) = 0 + \frac{2}{9} + \frac{4}{9} + \frac{2}{3} + \frac{4}{9} +  \frac{5}{18} = 2.0555555556 \approx 2\]
+	    		  \[E(X) = 0 + \frac{2}{9} + \frac{4}{9} + \frac{2}{3} + \frac{4}{9} +  \frac{5}{18} = 1.94 \approx 2\]
 	
 	\end{itemize}
 
@@ -197,6 +248,17 @@ random variables for each possible couple forming.
 for 12 independent trials.  Let $N$ be the random variable that counts
 the fraction of trials that are successful (so $N = S/12$, where
 $S$ is the number of successful trials).  Find $E(N)$.
+
+
+	\[ E(N) = E(\frac{S}{12} \]
+	\[ S = \{ x_1 + ... + x_12 \} \]
+	\[\frac{1}{12} E(S) \]
+	\[E(S) = \sum_{a_i \in R(S)} a_i \times P(X_i) \]
+	\[P(X_i) = \frac{1}{4} \]
+	\[E(S) = 12 \times E(X_i) \]
+	\[\frac{1}{12}E(S) = 12 \times \frac{1}{4} \]
+	\[ E(S) = \frac{1}{4} \]
+
 
 \item \textbf{Extra Credit: (4 points)} Consider the experiment where $n$ balls
 are to be placed randomly into $n$ boxes. Let $N_1$ count the number of boxes
