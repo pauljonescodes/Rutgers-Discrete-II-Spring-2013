@@ -1,0 +1,92 @@
+
+
+
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{amsthm}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,amstext}
+\usepackage{latexsym,ifthen,url,rotating}
+\usepackage[usenames,dvipsnames]{color}
+
+
+% --- -----------------------------------------------------------------
+% --- Document-specific definitions.
+% --- -----------------------------------------------------------------
+\newtheorem{definition}{Definition}
+
+\newcommand{\concat}{{\,\|\,}}
+\newcommand{\bits}{\{0,1\}}
+\newcommand{\Range}{{\mathrm{Range}}}
+\newcommand{\A}{{\mathcal{A}}}
+
+% --- -----------------------------------------------------------------
+% --- The document starts here.
+% --- -----------------------------------------------------------------
+\begin{document}
+%\maketitle
+\sloppy
+
+\noindent Rutgers University\\
+CS206: Introduction to Discrete Structures II, Spring 2013\\
+Professor David Cash\\
+
+\begin{center}
+\LARGE{\textbf{Homework 6}}\\
+\large{\textbf{\emph{Due at the beginning of class on Wednesday, April 3}}}
+\end{center}
+
+\vspace{.1in}
+
+\noindent\textbf{Instructions:} Point values for each problem are listed.
+Write your solutions neatly or type them up.  Typed solutions will also be
+accepted via Sakai.
+
+\begin{enumerate}
+
+
+\item (5 points) Let $X$ be a random variable on some sample space $S$ with
+expected value $\mu$ and variance $\sigma^2$.  Let $X_1$ and
+$X_2$ be \emph{identical independent copies} of $X$.  Find
+$E((X_1 - X_2)^2)$ in terms of $\mu$ and $\sigma^2$.  Give some intuition for why your answer makes sense.
+
+\item (3 points) Prove that $V(cX) = c^2 V(X)$ for any random variable $X$ and
+real number $c$.
+
+\item (5 points) Let $X$ be the random variable that is the sum of two
+independent fair die rolls.  Let $Y$ be the outcome of the first roll minus the
+outcome of the second roll.  Calculate $\mathrm{Cov}(X,Y)$.
+Are $X$ and $Y$ correlated?
+
+\item (4 points) Let $C$ be the random variable that is the number of heads in
+$100$ independent fair coin flips.  What are $E(C)$ and $V(C)$?  Find upper
+bounds on $P(C > 75)$, using Markov's Inequality and Tchebychev's Inequality.
+
+\item (4 points) Find an example where Markov's inequality is tight in the
+follow sense: For each  positive integer $a$, find a non-negative random
+variable $X$ such that $P(X\geq a) = E(X)/a$.
+
+\item (4 points) Prove the following: If $X$ is a non-negative random variable
+with $E(X) = \mu$, then for every $k$, $P(X \geq k\mu) \leq 1/k$.
+\textsf{Hint:  Apply Markov's inequality.}
+
+\item \textbf{Extra credit (4 points):} If $X$ is a non-negative
+random variable with $E(X) = \mu$, then Markov's inequality tells us
+that for every $a$, $P(X \geq a) \leq \mu/a$.  As we saw in class,
+this bound is sometimes very loose.  In this problem we'll look at
+a situation in which extra information can be used to tighten the
+bound.
+
+Suppose that we are told $X$ is \emph{bounded
+from below by some number $b$}, meaning $P(X \geq b) = 1$.  Use this information
+to find a tighter bound on $P(X \geq a)$.  \textsf{Hint:  Apply Markov's
+inequality to the r.v.  $Y = X - b$.}
+
+For concreteness, suppose $E(X) = 1000$ and $P(X \geq 500) = 1$.  Markov's
+says that $P(X \geq 2000) \leq 1000/2000 = 1/2$.  Use your method find a
+tighter bound on $P(X \geq 2000)$.
+
+\end{enumerate}
+
+
+\end{document}
+
