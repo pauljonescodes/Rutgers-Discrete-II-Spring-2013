@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{amsthm}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,amstext}
+\usepackage{latexsym,ifthen,url,rotating}
+\usepackage[usenames,dvipsnames]{color}
+
+
+% --- -----------------------------------------------------------------
+% --- Document-specific definitions.
+% --- -----------------------------------------------------------------
+\newtheorem{definition}{Definition}
+
+\newcommand{\concat}{{\,\|\,}}
+\newcommand{\bits}{\{0,1\}}
+\newcommand{\Range}{{\mathrm{Range}}}
+\newcommand{\A}{{\mathcal{A}}}
+
+% --- -----------------------------------------------------------------
+% --- The document starts here.
+% --- -----------------------------------------------------------------
+\begin{document}
+%\maketitle
+\sloppy
+
+\noindent Paul Jones \\
+Rutgers University\\
+CS206: Introduction to Discrete Structures II, Spring 2013\\
+Professor David Cash\\
+
+\begin{center}
+Homework 6 \\
+\end{center}
+
+\vspace{.1in}
+
+\begin{enumerate}
+
+\item (5 points) Let $X$ be a random variable on some sample space $S$ with
+expected value $\mu$ and variance $\sigma^2$.  Let $X_1$ and
+$X_2$ be \emph{identical independent copies} of $X$.  Find
+$E((X_1 - X_2)^2)$ in terms of $\mu$ and $\sigma^2$.  Give some intuition for why your answer makes sense. 
+
+% have same frequency function but are independent 
+
+       % V(X) = E(X^2) - E(X)^2
+       % 
+       
+	\begin{itemize}
+	
+		\item Definition of variance:
+		
+			  \[V(X) = E(X^2) - E(X)^2 \]
+		\item Substitute:
+			  \[\sigma^2 = E(X^2) - \mu^2 \]
+		\item Rearrange:
+			  \[\sigma^2 + \mu^2= E(X^2)  \]
+		\item Now for the algebra:
+		
+		      \[   E((X_1 - X_2)^2) \]
+		      \[ = E(X_1^2 - 2 X_1 X_2 + X_2^2) \]
+		      \[ = E(X_1^2) - 2E(X_1 X_2) + E(X_2^2) \]
+		      \[ = E(X_1^2) - 2E(X_1)E(X_2) + E(X_2^2) \]
+              \[ = \sigma^2 + \mu^2 - 2\mu^2 + \sigma^2 + \mu^2 \]
+        \item Simplify:
+              \[ = 2\sigma^2 + 2\mu^2 - 2\mu^2 \]
+              \[ = 2\sigma^2 \]
+        
+        \item This is so because we actually calculated the variance, because,
+        		  \[V(X_1 - X_2) = E((X_1 - X_2)^2) - E(X_1 - X_2)^2 \]
+		      \[= E((X_1 - X_2)^2) - 0 \]
+	  
+	\end{itemize}
+
+\item (3 points) Prove that $V(cX) = c^2 V(X)$ for any random variable $X$ and
+real number $c$.
+
+	\[ V(cX) = E((cX - \mu)^2) \]
+	\[ = E((cX)^2) - (E(cX))^2\]
+	\[ = E(c^2(X - \mu)^2)\]
+	\[ = c^2 E((X - \mu)^2)\]
+	\[ = c^2 V(X) \]
+
+\item (5 points) Let $X$ be the random variable that is the sum of two
+independent fair die rolls.  Let $Y$ be the outcome of the first roll minus the
+outcome of the second roll.  Calculate $\mathrm{Cov}(X,Y)$.
+Are $X$ and $Y$ correlated?
+
+\begin{itemize}
+	
+	\item Definition of covariance
+         \[ \mathrm{Cov}(X,Y) = E(XY) - E(X)E(Y)\]
+   \item Let $Z_1$ be a random variable representing the first roll, and $Z_2$ equal the second roll.
+         \[ X = Z_1 + Z_2 \]
+         \[ Y = Z_1 - Z_2 \]
+         \[ XY = Z_1^2 - Z_2^2 \]
+         \[ = E((Z_1 + Z_2)(Z_1 - Z_2)) - E(Z_1 + Z_2)E(Z_1 - Z_2) \]
+   \item Notice that $X$ and $Y$ are independent, by linearity of expectation, $E(Z_1^2 - Z_2^2) = E(Z_1^2) - E(Z_2^2)$.
+   \item Because of the definition of $Z_1$ and $Z_2$, the expectations are equal (they're both die rolls).
+   \item If you subtract any squared value from that same squared value, you get zero.
+         \[ E((Z_1 + Z_2)(Z_1 - Z_2)) = 0 \]
+   \item Which leaves us with:
+         \[ = 0- E(Z_1 + Z_2)E(Z_1 - Z_2)\]
+         \[ = 0- (E(Z_1) + E(Z_2))(E(Z_1) - E(Z_2))\]
+   \item The expectation of any die roll is about 3, but by linearity of expectation, it's always the same thing.
+         \[ =0 - (3 + 3)(3 - 3)\]
+         \[ = 0\]
+         
+\end{itemize}
+
+\item (4 points) Let $C$ be the random variable that is the number of heads in
+$100$ independent fair coin flips.  What are $E(C)$ and $V(C)$?  Find upper
+bounds on $P(C > 75)$, using Markov's Inequality and Tchebychev's Inequality.
+
+\begin{itemize}
+
+	\item Begin with expected value
+	      \[ E(C) = E(X_1 + X_2 + X_3 + ... + X_{100}) \]
+	\item Notice linearity of expectation
+	      \[ = \sum_{i = 1}^{100} E(X_i)  = 50 \]
+	\item Now for variance
+	      \[ V(C) = (100)\left(\frac{1}{2}\right)\left(1 - \frac{1}{2}\right) \]
+	\item Markov
+	      \[ P(C \ge 70) \le \frac{5}{7} \]
+	\item Tchebychev
+         \[ P(C \ge 70) \le \frac{25}{70^2} \]
+         
+\end{itemize}
+
+\item (4 points) Find an example where Markov's inequality is tight in the
+follow sense: For each  positive integer $a$, find a non-negative random
+variable $X$ such that $P(X \geq a) = E(X)/a$.
+
+	\begin{itemize}
+		\item Define $X$ to be a non-negative random variable with expectation, $E(X) = ac$.
+		\item The probability that $X$ is equal to $a$ is defined as $c$, for any $a \geq c$.
+		\item Markov's inequality is therefore,
+		
+	         \[ \Pr(X \geq a) \leq \frac{ac}{a} \]
+	         \[ \frac{ac}{a} = c\]
+	         
+	   \item Because Markov's caps off the probability at the probability, this is tightly bound.
+	\end{itemize}
+
+\item (4 points) Prove the following: If $X$ is a non-negative random variable
+with $E(X) = \mu$, then for every $k$, $P(X \geq k\mu) \leq 1/k$.
+
+\begin{itemize}
+
+	\item Markov's
+	
+	     \[\Pr(X \geq a) \leq \frac{\textrm{E}(X)}{a}\]
+	     
+	\item Let $a = k\mu$, where $k \geq 0$
+	
+	     \[ \Pr(X \geq  k\mu) \leq \frac{\textrm{E}(X)}{ k\mu}\]
+	     \[ \Pr(X \geq  k\mu) \leq \frac{\mu}{ k\mu}\]
+	     \[ \Pr(X \geq  k\mu) \leq \frac{1}{k}\]
+
+\end{itemize}
+
+\end{enumerate}
+
+\end{document}
