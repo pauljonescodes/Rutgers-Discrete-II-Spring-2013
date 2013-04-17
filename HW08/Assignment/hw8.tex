@@ -1,0 +1,70 @@
+
+
+
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{amsthm}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,amstext}
+\usepackage{latexsym,ifthen,url,rotating}
+\usepackage[usenames,dvipsnames]{color}
+
+
+% --- -----------------------------------------------------------------
+% --- Document-specific definitions.
+% --- -----------------------------------------------------------------
+\newtheorem{definition}{Definition}
+
+\newcommand{\concat}{{\,\|\,}}
+\newcommand{\bits}{\{0,1\}}
+\newcommand{\Range}{{\mathrm{Range}}}
+\newcommand{\A}{{\mathcal{A}}}
+
+% --- -----------------------------------------------------------------
+% --- The document starts here.
+% --- -----------------------------------------------------------------
+\begin{document}
+%\maketitle
+\sloppy
+
+\noindent Rutgers University\\
+CS206: Introduction to Discrete Structures II, Spring 2013\\
+Professor David Cash\\
+
+\begin{center}
+\LARGE{\textbf{Homework 8}}\\
+\large{\textbf{\emph{Due at the beginning of class on Monday, April 22}}}
+\end{center}
+
+\vspace{.1in}
+
+\noindent\textbf{Instructions:} Point values for each problem are listed.
+Write your solutions neatly or type them up.  Typed solutions will also be
+accepted via Sakai.
+
+\begin{enumerate}
+
+\item (7 points each) Solve the following recurrences using generating
+functions.  Show all of your work.  Solutions without detailed
+explanations will receive little or no credit.
+\begin{enumerate}
+\item $a_0 = 1, a_1=1$, and for $n\geq 1$, $a_n = a_{n-1} + 2a_{n-2}$
+\item $a_0 = 1, a_1=1$, and for $n\geq 2$, $a_n = a_{n-1} + 2 a_{n-2} + 4$
+\item $a_0 = 1$, and for $n\geq 1$, $a_n = 3a_{n-1} + 4^{n-1}$
+\end{enumerate}
+
+\item \textbf{(Extra credit: 5 points)} Generating functions can also
+be used to prove some difficult identities.  Prove that
+\[
+\binom{a+b}{k} = 
+\sum_{i=0}^n \binom{a}{i}\binom{b}{k-i} 
+\]
+by finding the generating function that has the left-hand side as its
+$k$-th coefficient, and then showing 
+that it is equal to the product of two generating
+functions and applying the convolution formula.  (See Example 5 in
+the scanned notes for a similar example.)
+\end{enumerate}
+
+
+\end{document}
+
